@@ -1,7 +1,9 @@
 version: "3"
 services:
   rstudio:
-    build: .
+    build:
+      context: .
+      dockerfile: DockerfileForR
     container_name: my-rstudio-server
     ports:
       - "8787:8787"
@@ -19,4 +21,6 @@ services:
     # 手作業なしにしたければ、この辺も参考に(ただ1回上の作業やるだけのほうが恐らく楽)
     # https://qiita.com/cheekykorkind/items/ba912b62d1f59ea1b41e
       - .:/home/rstudio/project
+    # renv の cache directory が ~/.cache/R/renv にある想定.
+      - ~/.cache/R/renv:/home/rstudio/.cache/R/renv
       - ./library:/usr/local/lib/R/site-library

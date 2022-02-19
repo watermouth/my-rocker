@@ -1,5 +1,6 @@
 # 以下を真似しています。
 # https://gihyo.jp/admin/serial/01/ubuntu-recipe/0531?page=2
+# 日本語pdf出力できないですね...
 
 FROM rocker/verse:4.1.2
 
