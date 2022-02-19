@@ -23,4 +23,6 @@ services:
       - .:/home/rstudio/project
     # renv の cache directory が ~/.cache/R/renv にある想定.
       - ~/.cache/R/renv:/home/rstudio/.cache/R/renv
+    # RStudio global option config
+      - ~/.config:/home/rstudio/.config
       - ./library:/usr/local/lib/R/site-library
