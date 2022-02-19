@@ -1,0 +1,22 @@
+version: "3"
+services:
+  rstudio:
+    build: .
+    container_name: my-rstudio-server
+    ports:
+      - "8787:8787"
+    environment:
+      - USERNAME=rstudio
+      - PASSWORD=rstudio
+      - DISABLE_AUTH=true
+    volumes:
+    # docker-compose up する前に、 library フォルダを所定のuserで作成しておけば、そのuserの権限でアクセスできる。
+    # 予め作っておくか、
+    # sudo chown 1000:1000 -R library
+    # or
+    # sudo chown rstudio:rstudio -R library
+    # するとよい. 1000 は user rstudio を想定している. host 側の userと同じ想定.
+    # 手作業なしにしたければ、この辺も参考に(ただ1回上の作業やるだけのほうが恐らく楽)
+    # https://qiita.com/cheekykorkind/items/ba912b62d1f59ea1b41e
+      - .:/home/rstudio/project
+      - ./library:/usr/local/lib/R/site-library
