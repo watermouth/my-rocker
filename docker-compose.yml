@@ -25,5 +25,5 @@ services:
       - ~/.cache/R/renv:/home/rstudio/.cache/R/renv
     # RStudio global option config
       - ~/.config:/home/rstudio/.config
-    # host側と共有するためのlibrary directory. renv使うなら不要に思える.
+    # host側と共有するためのlibrary directory. renv使うなら不要に思えるが, renv自体を置いておくのに必要か.
       - ./library:/usr/local/lib/R/site-library
